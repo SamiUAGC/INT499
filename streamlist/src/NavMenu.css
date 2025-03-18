@@ -1,0 +1,29 @@
+nav {
+  font-size: 30px;
+  color: darkorange;
+  margin-bottom: 20px;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+nav li {
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-icon {
+  width: 80px;
+  height: 80px;
+  margin-right: 8px;
+}
