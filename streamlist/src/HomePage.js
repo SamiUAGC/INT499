@@ -1,6 +1,7 @@
 import React from "react";
 import "./HomePage.css";
 
+// This component represents the home page of the application where users can input their favorite movies or shows and manage their list.
 function HomePage() {
   const [userInput, setUserInput] = React.useState(""); //Storing text.
   const [movieList, setMovieList] = React.useState([]); //Storing user input in new array.

@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./NavMenu.css";
 
+// This component renders the navigation menu for the application.
 function NavMenu() {
   return (
     <nav>
@@ -14,6 +15,11 @@ function NavMenu() {
         <li>
           <Link to="/movies">
             <img src="/MovieIcon.png" alt="MovieIcon" className="nav-icon" /> Movies
+          </Link>
+        </li>
+        <li>
+          <Link to="/subscriptions">
+            <img src="/SubscriptionsIcon.png" alt="SubscriptionsIcon" className="nav-icon" /> Subscriptions
           </Link>
         </li>
         <li>
