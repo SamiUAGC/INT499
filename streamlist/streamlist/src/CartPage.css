@@ -1,0 +1,22 @@
+.cart-container {
+  text-align: center;
+  padding-top: 20px;
+  font-size: 20px;
+  color: rgb(0, 0, 0);
+}
+
+.removeFromCartButton {
+  color: rgb(255, 42, 0);
+  font-size: 20px;
+}
+
+.CheckoutIcon {
+  width: 150px;
+  height: 150px;
+}
+
+.HeaderText {
+  font-size: 50px;
+  margin: 0px;
+  padding: 10px 0;
+}

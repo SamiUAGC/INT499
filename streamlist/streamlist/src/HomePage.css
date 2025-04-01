@@ -1,0 +1,65 @@
+.home-container {
+  text-align: center;
+  padding-top: 50px;
+}
+
+.header {
+  font-size: 50px;
+  color: darkorange;
+  margin: 0;
+  padding: 10px 0;
+}
+
+.welcome {
+  font-size: 50px;
+  color: darkorange;
+  margin: 20px 0;
+  padding: 10px 0;
+}
+
+.Input {
+  display: block;
+  width: 60%;
+  padding: 12px;
+  font-size: 1.2rem;
+  border: 2px solid #f0730d;
+  border-radius: 5px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.addToList-button {
+  display: block;
+  padding: 12px;
+  font-size: 1.2rem;
+  border: 2px solid #f0730d;
+  border-radius: 5px;
+  margin: 20px auto;
+  cursor: pointer;
+}
+
+.clearList-button {
+  display: block;
+  padding: 12px;
+  font-size: 1.2rem;
+  border: 2px solid #f0730d;
+  border-radius: 5px;
+  margin: 20px auto;
+  cursor: pointer;
+}
+
+.movie-list {
+  list-style-type: disc;
+  display: inline-block;
+  text-align: left;
+  margin-top: 30px;
+}
+
+.movie-list li {
+  padding: 5px;
+  font-size: 1.2rem;
+}
+
+.movie-list li::marker {
+  color: darkorange;
+}
