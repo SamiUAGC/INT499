@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./MoviesPage.css";
 
-const TMDB_API_KEY = "4614b2d7ace6d4303cc7b7c89d7aa690"; //Got the API key from TMDB (The Movie Database) after applying for it.
+const TMDB_API_KEY = process.env.REACT_APP_TMDB_API_KEY; //Got the API key from TMDB (The Movie Database) after applying for it.
 
 function MoviesPage() {
   const [SearchMovie, setSearchMovie] = useState("");
   const [SearchResult, setSearchResult] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   //Retrieves the search results from the local storage.
   useEffect(() => {
@@ -20,7 +22,13 @@ function MoviesPage() {
 
     //Searches for a movie using the TMDB API. So I dont have to worry about doing any write code for complex search conditions.
     //URL is found on TMDB API documentation "Search & Query for Details"
+
+    try {
     const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(SearchMovie)}`);
+    //Checks if the response is ok. If not, it will throw an error.
+     if (!response.ok) {
+      throw new Error("Network response was not ok");}
+    
     const json = await response.json();
 
     //Sets the search result to the state variable SearchResult.
@@ -29,7 +37,17 @@ function MoviesPage() {
 
     //Save the search results to the local storage.
     localStorage.setItem("SearchResult", JSON.stringify(json.results || []));
-  };
+  } catch (err) {
+    //If there is an error, it will log the error to the console.
+    //This is useful for debugging purposes.
+    //You can also display an error message to the user if needed.
+    console.error("Error fetching movies:", err);
+    // Set an error message to display if there is an error.
+    setError("Failed to fetch movies. Please try again later.");
+  } finally {
+    setIsLoading(false);
+  }
+};
 
   return (
     <div className="movies-container">
@@ -44,7 +62,9 @@ function MoviesPage() {
       />
       {/* Button to search for movies */}
       <button onClick={handleSearch} className="movie-search-button">Search</button>
-
+      {/* Display loading message while fetching data */}
+        {isLoading && <p>Loading...</p>}
+        {error && <p style={{ color: "red" }}>{error}</p>}  
       <div className="movie-results">
         {SearchResult.map((MovieName) => (
           <div key={MovieName.id} className="movie-result">

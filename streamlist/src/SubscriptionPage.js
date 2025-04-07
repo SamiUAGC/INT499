@@ -3,18 +3,18 @@ import list from "./data";
 import "./SubscriptionPage.css";
 
 // This component displays a list of subscription services and accessories.
-function SubscriptionPage({ addToCart, SubsAndOther }) {
+function SubscriptionPage({ addToCart, CartItems }) {
 // Function to handle adding products to cart. Subscriptions have a limit of 1 while others more than 1.
   const handleAdd = (product) => {
     const isSubscription = product.service.toLowerCase().includes("subscription");
-    const alreadyInCart = SubsAndOther.some(
+    const alreadyInCart = CartItems.some(
       (cartproduct) => cartproduct.id === product.id
     );
 // Check if the product is a subscription and if it's already in the cart
     if (isSubscription && alreadyInCart) {
       alert("Subscription already added to cart!");
     } else if (isSubscription) {
-      const subscriptionExists = SubsAndOther.some((cartproduct) =>
+      const subscriptionExists = CartItems.some((cartproduct) =>
         cartproduct.service.toLowerCase().includes("subscription")
       );
       if (subscriptionExists) {

@@ -2,18 +2,18 @@ import React from "react";
 import "./CartPage.css";
 
 // This component displays the cart page, showing the products added to the cart and calculate total price.
-function CartPage({ SubsAndOther, removeFromCart, updateQuantity }) {
-  const total = SubsAndOther.reduce((sum, product) => sum + product.price, 0);
+function CartPage({ CartItems, removeFromCart, updateQuantity }) {
+  const total = CartItems.reduce((sum, product) => sum + (product.price * product.quantity), 0);
   return (
     <div className="cart-container">
       <img src="/CheckoutIcon.png" alt="CheckoutIcon" className="CheckoutIcon" />
       <h2 className="HeaderText">Cart</h2>
-      {SubsAndOther.length === 0 ? (
+      {CartItems.length === 0 ? (
         <p>Nothing is added to the cart yet.</p>
       ) : (
         <div>
           {/* Map through the products in the cart and display them*/}
-          {SubsAndOther.map((product, index) => (
+          {CartItems.map((product, index) => (
             <div key={index} className="cart-product">
             <img src={product.img} alt={product.service} width="60" />
             <h3>{product.service}</h3>
